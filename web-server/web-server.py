@@ -7,6 +7,7 @@ from bottle.ext.websocket import websocket
 
 import os
 import json
+import base64
 
 clients = set()
 drones = set()
@@ -17,8 +18,13 @@ def static_css(filepath):
 
 
 @route('/static/js/<filepath:path>', name='js')
-def static_css(filepath):
+def static_js(filepath):
     return static_file(filepath, root="./static/js")
+
+
+@route('/static/img/<filepath:path>', name='img')
+def static_img(filepath):
+    return static_file(filepath, root="./static/img")
 
 
 @route('/')
@@ -34,7 +40,8 @@ def ws_client(ws):
         msg = ws.receive()
         if msg is not None:
             for c in drones:
-                c.send(json.dumps({'data': msg}))
+                # c.send(json.dumps({'data': msg}))
+                c.send(msg)
         else: break
     clients.remove(ws)
 
@@ -46,7 +53,8 @@ def ws_drone(ws):
         msg = ws.receive()
         if msg is not None:
             for c in clients:
-                c.send(json.dumps({'data': msg}))
+                encoded_msg = base64.b64encode(msg)
+                c.send(json.dumps({'frame': encoded_msg}))
         else: break
     drones.remove(ws)
 

@@ -3,6 +3,8 @@
 var uri = "ws://" + location.host + "/ws/client";
 var ws = new WebSocket(uri);
 
+var img = document.getElementById("liveImg");
+var arrayBuffer;
 
 $(function () {
   $('form').submit(function(){
@@ -56,17 +58,17 @@ $(function () {
     ws.send("s");
   });
 
-  $('#stop').click(function(){
-      console.log("s");
-      ws.send("s");
+  $('#jump').click(function(){
+      console.log("j");
+      ws.send("j");
     });
-  
+
   ws.onopen = function(evt) {
     console.log('connected');
   }
   ws.onmessage = function(msg){
-    var returnObject = JSON.parse(msg.data);
-    $('#messages').append($('<li>')).append($('<span id="clientId">').text(returnObject.id)).append($('<span id="clientMessage">').text(returnObject.data));
+    var encoded_frame = JSON.parse(msg.data).frame;
+    img.src = "data:image/mjpeg;base64," + encoded_frame;
   };
   ws.onerror = function(err){
     console.log("err", err);
