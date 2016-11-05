@@ -14,6 +14,53 @@ $(function () {
     $('#m').val('');
     return false;
   });
+
+  // html要素を検知
+  $('#forward')
+    .mousedown(function(){
+      console.log("f");
+      ws.send("f");
+    })
+  .mouseup(function(){
+    console.log("s");
+    ws.send("s");
+  });
+
+  $('#back')
+    .mousedown(function(){
+      console.log("b");
+      ws.send("b");
+    })
+  .mouseup(function(){
+    console.log("s");
+    ws.send("s");
+  });
+
+  $('#left-turn')
+    .mousedown(function(){
+      console.log("l");
+      ws.send("l");
+    })
+  .mouseup(function(){
+    console.log("s");
+    ws.send("s");
+  });
+
+  $('#right-turn')
+    .mousedown(function(){
+      console.log("r");
+      ws.send("r");
+    })
+  .mouseup(function(){
+    console.log("s");
+    ws.send("s");
+  });
+
+  $('#stop').click(function(){
+      console.log("s");
+      ws.send("s");
+    });
+  
   ws.onopen = function(evt) {
     console.log('connected');
   }
