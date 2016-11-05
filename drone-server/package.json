@@ -1,0 +1,14 @@
+{
+  "name": "drone-server",
+  "version": "1.0.0",
+  "description": "drone-server to control drone and communicate with web-server.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "taniTk, nm-recruit",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
