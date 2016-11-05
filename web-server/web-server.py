@@ -21,9 +21,6 @@ def static_css(filepath):
     return static_file(filepath, root="./static/js")
 
 
-# @route('/')
-# def html_index():
-#     return template('./views/index')
 @route('/')
 @view("index")
 def html_index():
