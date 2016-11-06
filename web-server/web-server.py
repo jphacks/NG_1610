@@ -35,6 +35,7 @@ def html_index():
 
 @get('/ws/client', apply=[websocket])
 def ws_client(ws):
+    print "client connected"
     clients.add(ws)
     while True:
         msg = ws.receive()
@@ -43,11 +44,13 @@ def ws_client(ws):
                 # c.send(json.dumps({'data': msg}))
                 c.send(msg)
         else: break
+    print "client disconnected"
     clients.remove(ws)
 
 
 @get('/ws/drone', apply=[websocket])
 def ws_drone(ws):
+    print "drone connected"
     drones.add(ws)
     while True:
         msg = ws.receive()
@@ -56,6 +59,7 @@ def ws_drone(ws):
                 encoded_msg = base64.b64encode(msg)
                 c.send(json.dumps({'frame': encoded_msg}))
         else: break
+    print "drone disconnected"
     drones.remove(ws)
 
 
