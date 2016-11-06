@@ -35,20 +35,20 @@
 簡単な処方を行うことができるドローンの開発．
 
 ### 注力したこと（こだわり等）
-*簡単に操作可能：ブラウザから操作可能なDrone
-*Droneから映像を獲得することができる
+* 簡単に操作可能：ブラウザから操作可能なDrone
+* Droneから映像を獲得することができる
 
 ## 開発技術
 ### 活用した外部技術
 #### API・データ
-*特になし
+* 特になし
 
 #### フレームワーク・ライブラリ・モジュール
-*Express
-*Bottle
-*WebSocket
-*node-jumping-night
-*Arduino_HttpClient_ESP8226
+* Express
+* Bottle
+* WebSocket
+* node-jumping-night
+* Arduino_HttpClient_ESP8226
 
 #### デバイス
 * Parrot Jumping Night Drone
@@ -63,4 +63,4 @@
 
 #### 研究内容（任意）
 * もし、製品に研究内容を用いた場合は、研究内容の詳細及び具体的な活用法について、こちらに記載をしてください。
-*
+
